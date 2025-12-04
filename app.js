@@ -12,30 +12,45 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.use((req, res, next) => {
-  // User.findByPk(1)
-  //   .then((user) => {
-  //     req.user = user;
-  //     next();
-  //   })
-  //   .catch((err) => console.log(err));
-});
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
 
-// const adminRoutes = require("./routes/admin");
-// const shopRoutes = require("./routes/shop");
+const User = require("./models/user");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/admin", adminRoutes);
-// app.use(shopRoutes);
+app.use((req, res, next) => {
+  User.findById("6931bda0358b88e8b46dec1b")
+    .then((user) => {
+      req.user = user;
+      next();
+    })
+    .catch((err) => console.log(err));
+});
+
+app.use("/admin", adminRoutes);
+app.use(shopRoutes);
 
 app.use(errorController.get404);
 
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
-    console.log("connected successfully");
+    User.findOne().then((user) => {
+      if (!user) {
+        const user = new User({
+          name: "sachin",
+          email: "sachin@gmail.com",
+          cart: {
+            items: [],
+          },
+        });
+        user.save();
+      }
+    });
+
     app.listen(3000);
+    console.log("Database connected and server run successfully");
   })
   .catch((err) => console.log(err));
