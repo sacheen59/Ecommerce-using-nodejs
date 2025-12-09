@@ -18,6 +18,7 @@
     "body-parser": "^1.18.3",
     "bson": "^5.5.1",
     "connect-mongodb-session": "^5.0.0",
+    "csurf": "^1.11.0",
     "dotenv": "^17.2.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
