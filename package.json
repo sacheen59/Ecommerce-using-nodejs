@@ -17,6 +17,7 @@
     "bcryptjs": "^3.0.3",
     "body-parser": "^1.18.3",
     "bson": "^5.5.1",
+    "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^5.0.0",
     "csurf": "^1.11.0",
     "dotenv": "^17.2.3",
