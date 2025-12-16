@@ -220,7 +220,7 @@ form {
   color: white;
 }
 
-.user-message{
+.user-message {
   margin: auto;
   width: 90%;
   border: 1px solid #4771fa;
@@ -230,9 +230,29 @@ form {
   text-align: center;
 }
 
-.user-message--error{
+.user-message--error {
   border-color: red;
   background-color: #ffb0b0;
+}
+
+.pagination {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #00695c;
+  padding: 0.5rem;
+  border: 1px solid #00695c;
+  margin: 0 1rem;
+}
+
+.pagination a:hover,
+.pagination a:active,
+.pagination a.active {
+  background-color: #00695c;
+  color: white;
 }
 
 @media (min-width: 768px) {
@@ -243,7 +263,7 @@ form {
   #side-menu-toggle {
     display: none;
   }
-  .user-message{
+  .user-message {
     width: 30rem;
   }
 }
